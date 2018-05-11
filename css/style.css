@@ -2,12 +2,6 @@ body {
 	background: #E8DFD6;
 }
 
-.contenedor {
-	width: 80%;
-	margin-right: auto;
-	margin-left: auto; 
-}
-
 h1 {
 	text-align: center;
 	vertical-align: middle;
@@ -16,11 +10,6 @@ h1 {
 .centrado {
 	margin: 10px auto;
 	display: block;
-}
-
-.contenido > a > img {
-	display: inline;
-	margin: 10px auto;
 }
 
 img {
@@ -36,6 +25,17 @@ div > div > div > div {
 div > div > .puntero:hover {
 	background-color: #DE656B;
 	cursor: pointer;
+}
+
+form {
+	width: 100%;
+}
+
+.contacto {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	text-align: left; 
 }
 
 
