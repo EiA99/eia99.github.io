@@ -1,5 +1,5 @@
 body {
-	background: #E8DFD6;
+	background: #fff;
 }
 
 h1 {
@@ -18,12 +18,12 @@ img {
 	justify-content: center;
 }
 
-div > div > div > div {
+div > div > div > a > div {
 	text-align: center;
 }
 
 div > div > .puntero:hover {
-	background-color: #DE656B;
+	background-color: #56AEF2;
 	cursor: pointer;
 }
 
@@ -35,7 +35,7 @@ form {
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
-	text-align: left; 
+	text-align: left;
 }
 
 
@@ -43,7 +43,7 @@ form {
 	background: #333;
 	color: white;
 	height: 80px;
-}	
+}
 	#main-header a {
 		color: white;
 	}
@@ -59,20 +59,20 @@ form {
 	#logo-header:hover {
 		color: #DE656B;
 	}
-	
+
 	#logo-header .site-name {
 		display: block;
 		font-weight: 700;
 		font-size: 1.2em;
 	}
-	
+
 	#logo-header .site-desc {
 		display: block;
 		font-weight: 300;
 		font-size: 0.8em;
 		color: #999;
 	}
-	
+
 
 /*
  * Navegación
@@ -86,18 +86,18 @@ nav {
 		list-style: none;
 		padding-right: 20px;
 	}
-	
+
 		nav ul li {
 			display: inline-block;
 			line-height: 80px;
 		}
-			
+
 			nav ul li a {
 				display: block;
 				padding: 0 10px;
 				text-decoration: none;
 			}
-			
+
 				nav ul li a:hover {
 					background: #DE656B;
 				}
@@ -113,7 +113,7 @@ nav {
 	#main-footer p {
 		margin: 0;
 	}
-	
+
 	#main-footer a {
 		color: white;
 	}

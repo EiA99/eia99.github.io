@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compra</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+  	<link rel="stylesheet" href="css/style.css" type="text/css">
+    <script type="text/javascript" src="js/operaciones.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <div class="row">
+  			<div class="col-sd-12 col-md-12 col-lg-12 p-0">
+  				<header id="main-header">
+  					<!-- <img src="img/logo.png"> -->
+  					<a id="logo-header" href="index.html">
+  						<span class="site-name">Pinkout</span>
+  						<span class="site-desc">Tu tienda online de ropa</span>
+  					</a> <!-- / #logo-header -->
+  					<nav>
+  						<ul>
+  							<li><a href="index.html">Inicio</a></li>
+  							<li><a href="hombre.html">Hombres</a></li>
+  							<li><a href="mujer.html">Mujeres</a></li>
+  							<li><a href="ninos.html">Niños</a></li>
+  							<li><a href="contacto.html">Contacto</a></li>
+  						</ul>
+  					</nav><!-- / nav -->
+  				</header>
+  			</div>
+  		</div>
+
+      <div class="contacto">
+        <div class="row" style="text-align: center">
+  				<h1> Comprar </h1>
+  			</div>
+
+        <div class="row">
+          <form action="compra.php" method="POST">
+            <div class="form-group">
+  						<label for="inputNombreProducto">Nombre producto</label>
+  						<input type="text" class="form-control" id="inputNombreProducto" placeholder="Nombre Producto">
+  					</div>
+
+            <div class="form-group">
+  						<label for="inputNombreCliente">Nombre completo</label>
+  						<input type="text" class="form-control" id="inputNombre" placeholder="Nombre completo" required>
+  					</div>
+
+  					<div class="form-group">
+  				    <label for="inputEmailCliente">Email</label>
+  				    <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+  				  </div>
+
+  					<div class="form-group">
+  				    <label for="inputCelularCliente">Número de celular</label>
+  				    <input type="tel" class="form-control" id="inputCelular" placeholder="Número celular" size="10" required>
+  				  </div>
+
+            <div class="form-group">
+  				    <label for="inputCantidad">Cantidad</label>
+  				    <input type="tel" class="form-control" id="inputCantidad" placeholder="Cantidad" required>
+  				  </div>
+
+            <div class="form-group">
+  				    <label for="inputDireccion">Dirección</label>
+  				    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
+  				  </div>
+
+  					<button type="button" class="btn btn-primary" onclick="obtenerParametros(event)"> Comprar </button>
+          </form>
+          <span id="spanJSON"></span>
+        </div>
+      </div>
+
+      <div class="row">
+  			<div class="col-sd-12 col-md-12 col-lg-12 p-0">
+  				<footer id="main-footer">
+  					<p>&copy; 2018 <a href="">Instragram</a></p>
+  				</footer>
+  			</div>
+  		</div>
+
+    </div>
+  </body>
+</html>
