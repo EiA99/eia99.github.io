@@ -46,6 +46,10 @@ a.nounderline:link {
 	text-decoration: none;
 }
 
+img.tamigual {
+	height: 350px;
+}
+
 #main-header {
 	background: #010101;
 	color: white;
