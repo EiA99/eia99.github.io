@@ -6,7 +6,7 @@
     <title>Compra</title>
     <link rel="stylesheet" href="css/bootstrap.css">
   	<link rel="stylesheet" href="css/style.css" type="text/css">
-    <script type="text/javascript" src="js/operaciones.js"></script>
+    <script type="text/javascript" src="server.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -25,6 +25,7 @@
   							<li><a href="hombre.html">Hombres</a></li>
   							<li><a href="mujer.html">Mujeres</a></li>
   							<li><a href="ninos.html">Niños</a></li>
+                <li><a href="verpedido.html">Ver pedido</a></li>
   							<li><a href="contacto.html">Contacto</a></li>
   						</ul>
   					</nav><!-- / nav -->
@@ -38,10 +39,10 @@
   			</div>
 
         <div class="row">
-          <form action="compra.php" method="POST">
+          <form action="server.js" method="POST">
             <div class="form-group">
-  						<label for="inputNombreProducto">Nombre producto</label>
-  						<input type="text" class="form-control" id="inputNombreProducto" placeholder="Nombre Producto">
+  						<label for="inputIdProducto">Código del producto</label>
+  						<input type="text" class="form-control" id="inputIdProducto" placeholder="Nombre Producto">
   					</div>
 
             <div class="form-group">
@@ -56,7 +57,7 @@
 
   					<div class="form-group">
   				    <label for="inputCelularCliente">Número de celular</label>
-  				    <input type="tel" class="form-control" id="inputCelular" placeholder="Número celular" size="10" required>
+  				    <input type="tel" class="form-control" id="inputCelular" placeholder="Número celular" maxlength="10" required>
   				  </div>
 
             <div class="form-group">
@@ -69,9 +70,8 @@
   				    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
   				  </div>
 
-  					<button type="button" class="btn btn-primary" onclick="obtenerParametros(event)"> Comprar </button>
+  					<button type="button" class="btn btn-primary" onclick="obtenerParametros(event)">Comprar</button>
           </form>
-          <span id="spanJSON"></span>
         </div>
       </div>
 
