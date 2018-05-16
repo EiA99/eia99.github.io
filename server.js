@@ -22,7 +22,7 @@ function listener(req, res){
 function paginaPorDefecto(req, res){
 	var archivo = req.url;
 	if(archivo=="/"){
-		archivo="index.html"
+		archivo="home.html"
 	}
 	try{
 		// cambie el archivo home.html por el el desea mostrar
