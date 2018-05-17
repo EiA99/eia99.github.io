@@ -1,66 +1,77 @@
-var http = require("http");
-var fs = require("fs");
-var url = require("url");
+'use strict';
 
-// Crea el servidor Web, que será atendido por la funcion listener
-var server = http.createServer( listener );
+const express = require('express');
+const app = express();
+const bodyParser = require("body-parser");
+const cors = require('cors');
+let contacts = require('./data');
+app.use(bodyParser.json)
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(cors());
 
-// funcion que atiende las peticiones
-function listener(req, res){
-	console.log( "Peticion recibida: " + req.url );
+//GET, POST, PUT, DELETE, PATCH
+app.get('/api/contacts', (request, response) =>{
+    if(!contacts){
+        response.status(404).json({message: "No se encontraron pedidos"});
+    }
+    response.json(contacts);
+});
+app.get('/api/contacts/:id', (request, response) => {
+    const requestId = request.params.id;
+    let contact = contacts.filter(contact => {
+        return contact.id == requestId;
+    });
 
-		// Descompone la URL en sus componentes
-		var params = url.parse( req.url );
-		// convierte las partes del path en un array
-		var folders = params.pathname.split("/");
+    if(!contact){
+        response.status(404).json({message: "No se encontro el pedido"});
+    }else{
+        response.json(contact[0]);
+    }
+});
 
-		var archivo = params.pathname;
+app.post('/api/contacts', (request, response) => {
+    const contact = {
+        id: request.body.id,
+        nombre: request.body.nombre,
+        email: request.body.email,
+        numero: request.body.numero,
+        cantidad: request.body.cantidad,
+        direccion: request.body.direccion
+    }
+    contacts.push(contact);
+    response.json(contact);
+});
 
-		paginaPorDefecto( req, res );
-}
+app.put('/api/contacts/:id', (request, response) =>{
+    const requestId= request.param.id;
 
-function paginaPorDefecto(req, res){
-	var archivo = req.url;
-	if(archivo=="/"){
-		archivo="home.html"
-	}
-	try{
-		// cambie el archivo home.html por el el desea mostrar
-		var readStream = fs.createReadStream( ".\\" + archivo, {} );
+    let contact = contacts.filter(contact =>{
+        return contact.id == requestId;
+    })[0];
+    const index = contacts.indexOf(contact);
 
-		// Espera a que comience la conversación para entregar el archivo
-		readStream.on('open', function () {
-			res.writeHead(200, { });
-			readStream.pipe(res);
-		});
+    const keys = Object.keys(request.body);
 
-		readStream.on( 'error', hayError );
+    keys.forEach(key => {
+        contact[key] = request.body[key];
+    });
+    contacts[index] = contact;
+    response.json(contacts[index]);
+});
+  
+app.delete('/api/contacts/:id', (request, response) =>{
+    const requestId= request.param.id;
 
-		// Controla en caso de error en la lectura
-		function hayError(error){
-			console.log( "Ocurrió un error" );
-			console.log( error );
+    let contact = contacts.filter(contact =>{
+        return contact.id == requestId;
+    })[0];
+    const index = contacts.indexOf(contact);
+    contacts.splice(index, 1);
+    response.json({message: `pedido ${contactId} deleted`});
+});
+const hostname = 'localhost';
+const port =8080;
 
-			res.writeHead(404, { 'content-type': 'text/html' });
-
-			res.write( '<h1>Archivo no encontrado</h1>' );
-			res.write( 'verifique la URL por favor' );
-			res.end();
-		// Equivalen a: res.end( 'Archivo no encontrado' );
-		}
-
-	} catch ( error ) {
-		console.log( "Ocurrió un error" );
-		console.log( error );
-
-	}
-}
-
-// Si no recibe un numero de puerto por parametro en la linea de comando, usa el 8888
-var port = process.argv[2] || 8888 ;
-
-// Ejecuta el servidor
-server.listen( port );
-
-console.log( "Servidor HTTP corriendo en el puerto " + port);
-console.log( "Ctrl-c para terminar");
+app.listen(port, hostname, ()  => {
+    console.log(`Server is running at http://${hostname}:${port}`);
+});

@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="contactsApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Compra</title>
     <link rel="stylesheet" href="css/bootstrap.css">
   	<link rel="stylesheet" href="css/style.css" type="text/css">
-    <script type="text/javascript" src="server.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="app.js"></script>
   </head>
-  <body>
+  <body ng-controller="contactsController">
     <div class="container-fluid">
 
       <div class="row">
   			<div class="col-sd-12 col-md-12 col-lg-12 p-0">
   				<header id="main-header">
   					<!-- <img src="img/logo.png"> -->
-  					<a id="logo-header" href="index.html">
+  					<a id="logo-header" href="home.html">
   						<span class="site-name">Pinkout</span>
   						<span class="site-desc">Tu tienda online de ropa</span>
   					</a> <!-- / #logo-header -->
   					<nav>
   						<ul>
-  							<li><a href="index.html">Inicio</a></li>
+  							<li><a href="home.html">Inicio</a></li>
   							<li><a href="hombre.html">Hombres</a></li>
   							<li><a href="mujer.html">Mujeres</a></li>
   							<li><a href="ninos.html">Niños</a></li>
@@ -39,38 +41,38 @@
   			</div>
 
         <div class="row">
-          <form action="server.js" method="POST">
+          <form ng-submit="saveContact(contact)">
             <div class="form-group">
   						<label for="inputIdProducto">Código del producto</label>
-  						<input type="text" class="form-control" id="inputIdProducto" placeholder="Nombre Producto">
+  						<input type="text" id="inputIdProducto" class="form-control" ng-model="contact.id" placeholder="Codigo Producto">
   					</div>
 
             <div class="form-group">
   						<label for="inputNombreCliente">Nombre completo</label>
-  						<input type="text" class="form-control" id="inputNombre" placeholder="Nombre completo" required>
+  						<input type="text" class="form-control" id="inputNombreCliente" ng-model="contact.nombre" placeholder="Nombre completo" required>
   					</div>
 
   					<div class="form-group">
   				    <label for="inputEmailCliente">Email</label>
-  				    <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+  				    <input type="email" class="form-control" id="inputEmailCliente" ng-model="contact.email" placeholder="Email" required>
   				  </div>
 
   					<div class="form-group">
   				    <label for="inputCelularCliente">Número de celular</label>
-  				    <input type="tel" class="form-control" id="inputCelular" placeholder="Número celular" maxlength="10" required>
+  				    <input type="tel" class="form-control" id="inputCelularCliente" ng-model="contact.numero" placeholder="Número celular" maxlength="10" required>
   				  </div>
 
             <div class="form-group">
   				    <label for="inputCantidad">Cantidad</label>
-  				    <input type="tel" class="form-control" id="inputCantidad" placeholder="Cantidad" required>
+  				    <input type="tel" class="form-control" id="inputCantidad" ng-model="contact.cantidad" placeholder="Cantidad" required>
   				  </div>
 
             <div class="form-group">
   				    <label for="inputDireccion">Dirección</label>
-  				    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
+  				    <input type="text" class="form-control" id="inputDireccion" ng-model="contact.direccion" placeholder="Dirección" required>
   				  </div>
 
-  					<button type="button" class="btn btn-primary" onclick="obtenerParametros(event)">Comprar</button>
+  					<button type="submit" class="btn btn-primary">Comprar</button>
           </form>
         </div>
       </div>

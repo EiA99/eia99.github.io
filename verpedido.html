@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="contactsApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ver pedido</title>
     <link rel="stylesheet" href="css/bootstrap.css">
   	<link rel="stylesheet" href="css/style.css" type="text/css">
-    <script type="text/javascript" src="server.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="app.js"></script>
   </head>
-  <body>
+  <body ng-controller="contactsController">
 
     <div class="container-fluid">
 
@@ -16,13 +18,13 @@
         <div class="col-sd-12 col-md-12 col-lg-12 p-0">
   				<header id="main-header">
   					<!-- <img src="img/logo.png"> -->
-  					<a id="logo-header" href="index.html">
+  					<a id="logo-header" href="home.html">
   						<span class="site-name">Pinkout</span>
   						<span class="site-desc">Tu tienda online de ropa</span>
   					</a> <!-- / #logo-header -->
   					<nav>
   						<ul>
-  							<li><a href="index.html">Inicio</a></li>
+  							<li><a href="home.html">Inicio</a></li>
   							<li><a href="hombre.html">Hombres</a></li>
   							<li><a href="mujer.html">Mujeres</a></li>
   							<li><a href="ninos.html">Niños</a></li>
@@ -33,25 +35,20 @@
   				</header>
   			</div>
       </div>
-
-      <div class="contacto">
-        <div class="row">
-          <h1>Ver pedido</h1>
-        </div>
-        <div class="row">
-          <form class="" action="" method="get">
-            <div class="form-group">
-              <label for="IdPedido">Código del pedido</label>
-              <input type="text" class="form-control" name="IdPedido" placeholder="Ingresar código producto">
-            </div>
-
-            <div class="form-group">
-              <button type="button" class="btn btn-outline-primary btn-block" onclick=""><a class="nounderline" href="OpPedido.html">Actualizar o Eliminar</a></button>
-            </div>
-          </form>
-
-        </div>
+      <div class="col-sm-6">
+        <ul class="list-group">
+            <h1>Pedidos</h1>
+          <li class="list-group-item" ng-repeat="contact in contacts">
+            <p>codigo: {{contact.id}}</p>
+            <p>nombre: {{contact.nombre}}</p>
+            <p>email: {{contact.email}}</p>
+            <p>numero: {{contact.numero}}</p>
+            <p>cantidad: {{contact.cantidad}}</p>
+            <p>dirección: {{contact.direccion}}</p>
+          </li>
+        </ul>
       </div>
+      
 
       <div class="row">
   			<div class="col-sd-12 col-md-12 col-lg-12 p-0">
@@ -62,6 +59,6 @@
   		</div>
 
     </div>
-
+    
   </body>
 </html>
